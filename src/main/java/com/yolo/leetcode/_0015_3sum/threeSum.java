@@ -1,34 +1,29 @@
 package com.yolo.leetcode._0015_3sum;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 public class threeSum {
+    /**
+     * 遍历 + 排序 +两数之和（hashMap）
+     */
     class Solution {
         public List<List<Integer>> threeSum(int[] nums) {
-            Arrays.sort(nums);
             List<List<Integer>> res = new ArrayList<>();
-            for (int i = 0; i < nums.length - 2; i++) {
-                if (nums[i] > 0) break; // 如果当前数大于0，则三数之和不可能等于0
-                if (i > 0 && nums[i - 1] == nums[i]) continue; // 去重
-                int left = i + 1, right = nums.length - 1;
-                while (left < right) {
-                    int sum = nums[i] + nums[left] + nums[right];
-                    if (sum > 0) right--;
-                    else if (sum < 0) left++;
-                    else {
-                        res.add(Arrays.asList(nums[i], nums[left], nums[right]));
-                        left++;
-                        right--;
-                        while (left < right && nums[left] == nums[left - 1]) left++;
-                        while (left < right && nums[right] == nums[right + 1]) right--;
+            Arrays.sort(nums);
+            for (int i = 0; i < nums.length; i++) {
+                HashMap<Integer, Integer> hashMap = new HashMap<>();
+                for (int j = i + 1; j < nums.length; j++) {
+                    if (hashMap.containsKey(-nums[i] - nums[j])){
+                        res.add(new ArrayList<Integer>(Arrays.asList(nums[i], nums[j], -nums[i] - nums[j])));
+                        while(j + 1 < nums.length && nums[j + 1] == nums[j]) j++;
+                    }else {
+                        hashMap.put(nums[j], j);
                     }
+
                 }
+                while(i + 1 < nums.length && nums[i + 1] == nums[i]) i++;
             }
             return res;
-
         }
     }
 
