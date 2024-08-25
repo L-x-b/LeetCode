@@ -41,12 +41,12 @@ public class SubarraySumEqualsK_2 {
 
         Solution solution = new SubarraySumEqualsK_2().new Solution();
 
-//        int[] nums = {1, 1, 1};
-//        int k = 2;
+        int[] nums = {1, 1, 1};
+        int k = 2;
 //        int[] nums = {1, 2, 3};
 //        int k = 3;
-        int[] nums = {1, -1, 0};
-        int k = 0;
+//        int[] nums = {1, -1, 0};
+//        int k = 0;
 
         int i = solution.subarraySum(nums, k);
         System.out.println(i);

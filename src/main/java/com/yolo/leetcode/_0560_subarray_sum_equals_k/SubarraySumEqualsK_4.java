@@ -23,24 +23,19 @@ public class SubarraySumEqualsK_4 {
      */
     class Solution {
         public int subarraySum(int[] nums, int k) {
-
-            Map<Integer, Integer> preSumFreq = new HashMap<>();
+            HashMap<Integer, Integer> mp = new HashMap<>();
+            int ans = 0;
             int preSum = 0;
-            int count = 0;
-            preSumFreq.put(0, 1);
-
+            mp.put(0, 1);
 
             for (int num : nums) {
                 preSum += num;
-                if (preSumFreq.containsKey(preSum - k)) {
-                    count += preSumFreq.get(preSum - k);
+                if (mp.containsKey(preSum - k)) {
+                    ans += mp.get(preSum - k);
                 }
-
-                // 维护preSumFreq的个数
-                preSumFreq.put(preSum, preSumFreq.getOrDefault(preSum, 0) + 1);
+                mp.put(preSum, mp.getOrDefault(preSum, 0) + 1);
             }
-            return count;
-
+            return ans;
         }
     }
 
@@ -49,12 +44,12 @@ public class SubarraySumEqualsK_4 {
 
         Solution solution = new SubarraySumEqualsK_4().new Solution();
 
-//        int[] nums = {1, 1, 1};
-//        int k = 2;
+        int[] nums = {1, 1, 1};
+        int k = 2;
 //        int[] nums = {1, 2, 3};
 //        int k = 3;
-        int[] nums = {1, -1, 0};
-        int k = 0;
+//        int[] nums = {1, -1, 0};
+//        int k = 0;
 
         int i = solution.subarraySum(nums, k);
         System.out.println(i);
