@@ -20,7 +20,7 @@ public class MergeIntervals {
                 int right = interval[1];
                 if (merge.isEmpty() || merge.get(merge.size() - 1)[1] < left) {
                     merge.add(interval);
-                }else {
+                } else {
                     merge.get(merge.size() - 1)[1] = Math.max(merge.get(merge.size() - 1)[1], right);
                 }
             }
@@ -28,8 +28,10 @@ public class MergeIntervals {
         }
     }
 
+
     public static void main(String[] args) {
-        int[][] intervals = {{1,3},{2,6},{8,10},{15,18}};
+//        int[][] intervals = {{1,3},{2,6},{8,10},{15,18}};
+        int[][] intervals = {{1, 4}, {0, 2}, {3, 5}};
         int[][] merge = new MergeIntervals().new Solution().merge(intervals);
         for (int[] interval : merge)
             System.out.println(Arrays.toString(interval));
