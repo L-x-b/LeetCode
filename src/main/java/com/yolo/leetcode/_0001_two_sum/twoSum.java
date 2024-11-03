@@ -1,7 +1,5 @@
 package com.yolo.leetcode._0001_two_sum;
 
-
-
 public class twoSum {
 
     /**
