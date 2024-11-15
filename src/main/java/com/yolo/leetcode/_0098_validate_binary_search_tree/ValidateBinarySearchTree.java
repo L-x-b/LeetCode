@@ -21,6 +21,9 @@ public class ValidateBinarySearchTree {
         }
     }
 
+    /**
+     * 通过递归的方式，判断节点是否在上下限之中
+     */
     class Solution {
         public boolean isValidBST(TreeNode root) {
             return isValidBST(root, Long.MIN_VALUE, Long.MAX_VALUE);
